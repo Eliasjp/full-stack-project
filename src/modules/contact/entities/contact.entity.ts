@@ -11,9 +11,9 @@ export class Contact {
     @CreateDateColumn({type: "date"})
     created_at: Date;
 
-    @OneToMany(() => Email, (email) => email.contact_owner)
-    emails: Email[]
+    @OneToMany(() => EmailContact, (email) => email.contact)
+    emails: EmailContact[]
 
-    @OneToMany(() => Phone, (phone) => phone.contact_owner)
-    phones: Phone[]
+    @OneToMany(() => PhoneContact, (phone) => phone.contact)
+    phones: PhoneContact[]
 }

@@ -1,3 +1,5 @@
+import { EmailClient } from "src/modules/email_client/entities/email_client.entity";
+import { PhoneClient } from "src/modules/phone_client/entities/phone_client.entity";
 import { PrimaryGeneratedColumn, Column, Entity, CreateDateColumn, OneToMany } from "typeorm"
 
 @Entity()
@@ -11,9 +13,9 @@ export class Client {
     @CreateDateColumn({type: "date"})
     created_at: Date;
 
-    @OneToMany(() => Email, (email) => email.client_owner)
-    emails: Email[]
+    @OneToMany(() => EmailClient, (email) => email.client)
+    emails: EmailClient[]
 
-    @OneToMany(() => Phone, (phone) => phone.client_owner)
-    phones: Phone[]
+    @OneToMany(() => PhoneClient, (phone) => phone.client)
+    phones: PhoneClient[]
 }
