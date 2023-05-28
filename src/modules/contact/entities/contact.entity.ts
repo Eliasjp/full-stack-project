@@ -1,7 +1,7 @@
 import { PrimaryGeneratedColumn, Column, Entity, CreateDateColumn, OneToMany } from "typeorm"
 
 @Entity()
-export class Client {
+export class Contact {
     @PrimaryGeneratedColumn()
     readonly id: number;
 
@@ -11,9 +11,9 @@ export class Client {
     @CreateDateColumn({type: "date"})
     created_at: Date;
 
-    @OneToMany(() => Email, (email) => email.client_owner)
+    @OneToMany(() => Email, (email) => email.contact_owner)
     emails: Email[]
 
-    @OneToMany(() => Phone, (phone) => phone.client_owner)
+    @OneToMany(() => Phone, (phone) => phone.contact_owner)
     phones: Phone[]
 }
