@@ -1,0 +1,12 @@
+import { ContactService } from './contact.service';
+import { CreateContactDto } from './dto/create-contact.dto';
+import { UpdateContactDto } from './dto/update-contact.dto';
+export declare class ContactController {
+    private readonly contactService;
+    constructor(contactService: ContactService);
+    create(createContactDto: CreateContactDto): string;
+    findAll(): string;
+    findOne(id: string): string;
+    update(id: string, updateContactDto: UpdateContactDto): string;
+    remove(id: string): string;
+}

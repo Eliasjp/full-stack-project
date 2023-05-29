@@ -1,5 +1,3 @@
-import { EmailClient } from "src/modules/email_client/entities/email_client.entity";
-import { PhoneClient } from "src/modules/phone_client/entities/phone_client.entity";
 import { PrimaryGeneratedColumn, Column, Entity, CreateDateColumn, OneToMany } from "typeorm"
 
 @Entity()
@@ -10,12 +8,12 @@ export class Client {
     @Column({type: "varchar", length: 100, unique: true})
     full_name: string;
 
+    @Column({type: "varchar", length: 255, unique: true})
+    emails: string;
+
+    @Column({type: "varchar", unique: true})
+    phones: string;
+    
     @CreateDateColumn({type: "date"})
     created_at: Date;
-
-    @OneToMany(() => EmailClient, (email) => email.client)
-    emails: EmailClient[]
-
-    @OneToMany(() => PhoneClient, (phone) => phone.client)
-    phones: PhoneClient[]
 }
