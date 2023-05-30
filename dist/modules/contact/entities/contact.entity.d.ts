@@ -1,9 +1,8 @@
-import { EmailContact } from "src/modules/email_contact/entities/email_contact.entity";
-import { PhoneContact } from "src/modules/phone_contact/entities/phone_contact.entity";
 export declare class Contact {
-    readonly id: number;
+    readonly id: string;
     full_name: string;
+    email: string;
+    phone: string;
     created_at: Date;
-    emails: EmailContact[];
-    phones: PhoneContact[];
+    client_id?: string;
 }

@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
+import { ContactRepository } from './repository/contact.repository';
 
 @Injectable()
 export class ContactService {
-  create(createContactDto: CreateContactDto) {
-    return 'This action adds a new contact';
+  constructor (private contactRepository: ContactRepository){}
+  async create(createContactDto: CreateContactDto) {
+    const contact = await this.contactRepository.create(createContactDto)
+    return contact
   }
 
-  findAll() {
-    return `This action returns all contact`;
+  async findAll() {
+    const contacts = await this.contactRepository.findAll()
+    return contacts
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} contact`;
+  async findOne(id: string) {
+    const find_contact = await this.contactRepository.findOne(id)
+    return find_contact
   }
 
-  update(id: number, updateContactDto: UpdateContactDto) {
-    return `This action updates a #${id} contact`;
+  async update(id: string, updateContactDto: UpdateContactDto) {
+    const update_contact = await this.contactRepository.update(id, updateContactDto)
+    return update_contact
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} contact`;
+  async remove(id: string) {
+    await this.contactRepository.delete(id)
   }
 }

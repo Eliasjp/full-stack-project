@@ -10,33 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
-const email_client_entity_1 = require("src/modules/email_client/entities/email_client.entity");
-const phone_client_entity_1 = require("src/modules/phone_client/entities/phone_client.entity");
-const typeorm_1 = require("typeorm");
-let Client = class Client {
-};
+const class_transformer_1 = require("class-transformer");
+class Client {
+}
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
-    __metadata("design:type", Number)
-], Client.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "varchar", length: 100, unique: true }),
+    (0, class_transformer_1.Exclude)(),
     __metadata("design:type", String)
-], Client.prototype, "full_name", void 0);
-__decorate([
-    (0, typeorm_1.CreateDateColumn)({ type: "date" }),
-    __metadata("design:type", Date)
-], Client.prototype, "created_at", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => email_client_entity_1.EmailClient, (email) => email.client),
-    __metadata("design:type", Array)
-], Client.prototype, "emails", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => phone_client_entity_1.PhoneClient, (phone) => phone.client),
-    __metadata("design:type", Array)
-], Client.prototype, "phones", void 0);
-Client = __decorate([
-    (0, typeorm_1.Entity)()
-], Client);
+], Client.prototype, "password", void 0);
 exports.Client = Client;
 //# sourceMappingURL=client.entity.js.map

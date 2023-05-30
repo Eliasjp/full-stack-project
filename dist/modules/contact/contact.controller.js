@@ -28,13 +28,13 @@ let ContactController = class ContactController {
         return this.contactService.findAll();
     }
     findOne(id) {
-        return this.contactService.findOne(+id);
+        return this.contactService.findOne(id);
     }
     update(id, updateContactDto) {
-        return this.contactService.update(+id, updateContactDto);
+        return this.contactService.update(id, updateContactDto);
     }
     remove(id) {
-        return this.contactService.remove(+id);
+        return this.contactService.remove(id);
     }
 };
 __decorate([

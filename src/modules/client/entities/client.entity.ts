@@ -1,19 +1,14 @@
-import { PrimaryGeneratedColumn, Column, Entity, CreateDateColumn, OneToMany } from "typeorm"
+import { Exclude } from "class-transformer";
 
-@Entity()
 export class Client {
-    @PrimaryGeneratedColumn()
-    readonly id: number;
+    readonly id: string;
 
-    @Column({type: "varchar", length: 100, unique: true})
     full_name: string;
+    email: string;
+    phone: string;
 
-    @Column({type: "varchar", length: 255, unique: true})
-    emails: string;
+    @Exclude()
+    password: string;
 
-    @Column({type: "varchar", unique: true})
-    phones: string;
-    
-    @CreateDateColumn({type: "date"})
     created_at: Date;
 }

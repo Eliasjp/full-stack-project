@@ -10,12 +10,22 @@ exports.ClientModule = void 0;
 const common_1 = require("@nestjs/common");
 const client_service_1 = require("./client.service");
 const client_controller_1 = require("./client.controller");
+const client_repository_1 = require("./repository/client.repository");
+const client_in_memory_repository_1 = require("./repository/in-memory/client.in-memory.repository");
+const prisma_service_1 = require("src/database/prisma.service");
 let ClientModule = class ClientModule {
 };
 ClientModule = __decorate([
     (0, common_1.Module)({
         controllers: [client_controller_1.ClientController],
-        providers: [client_service_1.ClientService]
+        providers: [
+            client_service_1.ClientService,
+            prisma_service_1.PrismaService,
+            {
+                provide: client_repository_1.ClientRepository,
+                useClass: client_in_memory_repository_1.ClientInMemoryRepository
+            }
+        ]
     })
 ], ClientModule);
 exports.ClientModule = ClientModule;

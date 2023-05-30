@@ -5,28 +5,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContactService = void 0;
 const common_1 = require("@nestjs/common");
+const contact_repository_1 = require("./repository/contact.repository");
 let ContactService = class ContactService {
-    create(createContactDto) {
-        return 'This action adds a new contact';
+    constructor(contactRepository) {
+        this.contactRepository = contactRepository;
     }
-    findAll() {
-        return `This action returns all contact`;
+    async create(createContactDto) {
+        const contact = await this.contactRepository.create(createContactDto);
+        return contact;
     }
-    findOne(id) {
-        return `This action returns a #${id} contact`;
+    async findAll() {
+        const contacts = await this.contactRepository.findAll();
+        return contacts;
     }
-    update(id, updateContactDto) {
-        return `This action updates a #${id} contact`;
+    async findOne(id) {
+        const find_contact = await this.contactRepository.findOne(id);
+        return find_contact;
     }
-    remove(id) {
-        return `This action removes a #${id} contact`;
+    async update(id, updateContactDto) {
+        const update_contact = await this.contactRepository.update(id, updateContactDto);
+        return update_contact;
+    }
+    async remove(id) {
+        await this.contactRepository.delete(id);
     }
 };
 ContactService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [contact_repository_1.ContactRepository])
 ], ContactService);
 exports.ContactService = ContactService;
 //# sourceMappingURL=contact.service.js.map

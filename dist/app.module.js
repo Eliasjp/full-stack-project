@@ -11,16 +11,12 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const client_module_1 = require("./modules/client/client.module");
-const email_contact_module_1 = require("./modules/email_contact/email_contact.module");
-const phone_contact_module_1 = require("./modules/phone_contact/phone_contact.module");
-const phone_client_module_1 = require("./modules/phone_client/phone_client.module");
-const email_client_module_1 = require("./modules/email_client/email_client.module");
 const contact_module_1 = require("./modules/contact/contact.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [client_module_1.ClientModule, contact_module_1.ContactModule, email_client_module_1.EmailClientModule, phone_client_module_1.PhoneClientModule, phone_contact_module_1.PhoneContactModule, email_contact_module_1.EmailContactModule],
+        imports: [client_module_1.ClientModule, contact_module_1.ContactModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

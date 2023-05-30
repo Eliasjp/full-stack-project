@@ -28,13 +28,13 @@ let ClientController = class ClientController {
         return this.clientService.findAll();
     }
     findOne(id) {
-        return this.clientService.findOne(+id);
+        return this.clientService.findOne(id);
     }
     update(id, updateClientDto) {
-        return this.clientService.update(+id, updateClientDto);
+        return this.clientService.update(id, updateClientDto);
     }
     remove(id) {
-        return this.clientService.remove(+id);
+        return this.clientService.delete(id);
     }
 };
 __decorate([
