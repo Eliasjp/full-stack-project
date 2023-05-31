@@ -6,8 +6,8 @@ import { ContactRepository } from './repository/contact.repository';
 @Injectable()
 export class ContactService {
   constructor (private contactRepository: ContactRepository){}
-  async create(createContactDto: CreateContactDto) {
-    const contact = await this.contactRepository.create(createContactDto)
+  async create(createContactDto: CreateContactDto, id_client: string) {
+    const contact = await this.contactRepository.create(createContactDto, id_client)
     return contact
   }
 

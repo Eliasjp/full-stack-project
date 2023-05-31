@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { ClientService } from './client.service';
 import { ClientController } from './client.controller';
 import { ClientRepository } from './repository/client.repository';
-import { ClientInMemoryRepository } from './repository/in-memory/client.in-memory.repository';
 import { PrismaService } from 'src/database/prisma.service';
+import { ClientPrismaRepository } from './repository/prisma/client-prisma.repository';
 
 @Module({
   controllers: [ClientController],
@@ -12,7 +12,7 @@ import { PrismaService } from 'src/database/prisma.service';
     PrismaService,
     {
       provide: ClientRepository,
-      useClass: ClientInMemoryRepository
+      useClass: ClientPrismaRepository
     }
   ]
 })

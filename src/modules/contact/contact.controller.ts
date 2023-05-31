@@ -7,9 +7,9 @@ import { UpdateContactDto } from './dto/update-contact.dto';
 export class ContactController {
   constructor(private readonly contactService: ContactService) {}
 
-  @Post()
-  create(@Body() createContactDto: CreateContactDto) {
-    return this.contactService.create(createContactDto);
+  @Post(":id")
+  create(@Body() createContactDto: CreateContactDto, @Param("id") id: string) {
+    return this.contactService.create(createContactDto, id);
   }
 
   @Get()

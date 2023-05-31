@@ -21,8 +21,8 @@ let ContactController = class ContactController {
     constructor(contactService) {
         this.contactService = contactService;
     }
-    create(createContactDto) {
-        return this.contactService.create(createContactDto);
+    create(createContactDto, id) {
+        return this.contactService.create(createContactDto, id);
     }
     findAll() {
         return this.contactService.findAll();
@@ -38,10 +38,11 @@ let ContactController = class ContactController {
     }
 };
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)(":id"),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_contact_dto_1.CreateContactDto]),
+    __metadata("design:paramtypes", [create_contact_dto_1.CreateContactDto, String]),
     __metadata("design:returntype", void 0)
 ], ContactController.prototype, "create", null);
 __decorate([

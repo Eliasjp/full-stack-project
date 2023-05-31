@@ -16,8 +16,8 @@ let ContactService = class ContactService {
     constructor(contactRepository) {
         this.contactRepository = contactRepository;
     }
-    async create(createContactDto) {
-        const contact = await this.contactRepository.create(createContactDto);
+    async create(createContactDto, id_client) {
+        const contact = await this.contactRepository.create(createContactDto, id_client);
         return contact;
     }
     async findAll() {

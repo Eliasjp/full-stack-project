@@ -11,8 +11,8 @@ datasource db {
 }
 
 model Client {
-  id         String    @id
-  full_name       String
+  id         String    @id @default(uuid())
+  full_name  String
   email      String    @unique
   phone      String    @unique
   password   String
@@ -21,8 +21,8 @@ model Client {
 }
 
 model Contact {
-  id         String   @id
-  full_name       String
+  id         String   @id @default(uuid())
+  full_name  String
   email      String
   phone      String
   created_at DateTime @default(now())

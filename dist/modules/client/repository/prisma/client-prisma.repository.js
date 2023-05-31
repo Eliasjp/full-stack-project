@@ -13,6 +13,7 @@ exports.ClientPrismaRepository = void 0;
 const common_1 = require("@nestjs/common");
 const client_entity_1 = require("../../entities/client.entity");
 const prisma_service_1 = require("src/database/prisma.service");
+const class_transformer_1 = require("class-transformer");
 let ClientPrismaRepository = class ClientPrismaRepository {
     constructor(prisma) {
         this.prisma = prisma;
@@ -21,24 +22,39 @@ let ClientPrismaRepository = class ClientPrismaRepository {
         const client = new client_entity_1.Client();
         Object.assign(client, Object.assign({}, data));
         const new_client = await this.prisma.client.create({ data: Object.assign({}, client) });
+        return (0, class_transformer_1.plainToInstance)(client_entity_1.Client, new_client);
     }
-    findAll() {
-        throw new Error("Method not implemented.");
+    async findAll() {
+        const all_clients = await this.prisma.client.findMany();
+        return (0, class_transformer_1.plainToInstance)(client_entity_1.Client, all_clients);
     }
-    findOne(id) {
-        throw new Error("Method not implemented.");
+    async findOne(id) {
+        const find_client = await this.prisma.client.findUnique({
+            where: { id }
+        });
+        return (0, class_transformer_1.plainToInstance)(client_entity_1.Client, find_client);
     }
-    findByEmail(email) {
-        throw new Error("Method not implemented.");
+    async findByEmail(email) {
+        const find_client = await this.prisma.client.findUnique({
+            where: { email }
+        });
+        return (0, class_transformer_1.plainToInstance)(client_entity_1.Client, find_client);
     }
-    findByPhone(phone) {
-        throw new Error("Method not implemented.");
+    async findByPhone(phone) {
+        const find_client = await this.prisma.client.findUnique({
+            where: { phone }
+        });
+        return (0, class_transformer_1.plainToInstance)(client_entity_1.Client, find_client);
     }
     update(id, data) {
-        throw new Error("Method not implemented.");
+        const updated_client = this.prisma.client.update({
+            where: { id },
+            data: Object.assign({}, data)
+        });
+        return (0, class_transformer_1.plainToInstance)(client_entity_1.Client, updated_client);
     }
-    delete(id) {
-        throw new Error("Method not implemented.");
+    async delete(id) {
+        await this.prisma.client.delete({ where: { id } });
     }
 };
 ClientPrismaRepository = __decorate([

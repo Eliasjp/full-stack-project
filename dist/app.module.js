@@ -12,13 +12,14 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const client_module_1 = require("./modules/client/client.module");
 const contact_module_1 = require("./modules/contact/contact.module");
+const prisma_service_1 = require("./database/prisma.service");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [client_module_1.ClientModule, contact_module_1.ContactModule],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [app_service_1.AppService, prisma_service_1.PrismaService],
     })
 ], AppModule);
 exports.AppModule = AppModule;
